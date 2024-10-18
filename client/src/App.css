@@ -6,6 +6,31 @@
   height: 40vmin;
   pointer-events: none;
 }
+header, footer {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-card {
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
