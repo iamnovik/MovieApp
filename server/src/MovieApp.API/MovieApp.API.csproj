@@ -6,7 +6,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>MovieApp</RootNamespace>
     </PropertyGroup>
-
+    <ItemGroup>
+        <ProjectReference Include="..\MovieApp.BLL\MovieApp.BLL.csproj" />
+        <ProjectReference Include="..\MovieApp.DAL\MovieApp.DAL.csproj" />
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
