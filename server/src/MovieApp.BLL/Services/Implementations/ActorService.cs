@@ -34,10 +34,10 @@ public class ActorService(IUnitOfWork unitOfWork) : IActorService
         return actorApiResponse?.Cast;
     }
 
-    public async Task<List<ActorSearchDto>?> SearchActorsAsync(string query, int page, CancellationToken cancellationToken = default)
+    public async Task<ActorSearchResponse?> SearchActorsAsync(string query, int page, CancellationToken cancellationToken = default)
     {
         var actorsJson = await unitOfWork.Actors.GetSearchActorAsync(query,page);
         var actorApiResponse = JsonConvert.DeserializeObject<ActorSearchResponse>(actorsJson);
-        return actorApiResponse?.Results;
+        return actorApiResponse;
     }
 }

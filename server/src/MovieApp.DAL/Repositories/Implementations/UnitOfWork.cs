@@ -19,6 +19,10 @@ public class UnitOfWork : IUnitOfWork
     private MovieRepository? _movieRepository;
 
     public IMovieRepository Movies => _movieRepository ??= new MovieRepository(_httpClient);
+    
+    private ImageRepository? _imageRepository;
+
+    public IImageRepository Images => _imageRepository ??= new ImageRepository(_httpClient);
 
         
     public void Dispose()

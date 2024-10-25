@@ -31,4 +31,5 @@ public class MovieController(IMovieService _movieService) : ControllerBase
         var movies = await _movieService.SearchMoviesAsync(query, page);
         return Ok(movies);
     }   
+
 }

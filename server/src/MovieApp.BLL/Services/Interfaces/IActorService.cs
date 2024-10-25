@@ -9,5 +9,5 @@ public interface IActorService
     Task<ActorDto?> GetActorByIdAsync(int actorId, CancellationToken cancellationToken = default);
 
     Task<List<ActorCreditDto>?> GetActorCreditsByIdAsync(int actorId, CancellationToken cancellationToken = default);
-    Task<List<ActorSearchDto>?> SearchActorsAsync(string query, int page, CancellationToken cancellationToken = default);
+    Task<ActorSearchResponse?> SearchActorsAsync(string query, int page, CancellationToken cancellationToken = default);
 }

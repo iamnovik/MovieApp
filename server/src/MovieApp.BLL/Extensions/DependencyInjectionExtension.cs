@@ -11,7 +11,7 @@ public static class DependencyInjectionExtension
     {
         services.AddScoped<IMovieService, MovieService>();
         services.AddScoped<IActorService, ActorService>();
-
+        services.AddScoped<IImageService, ImageService>();
         return services;
     }
 }
