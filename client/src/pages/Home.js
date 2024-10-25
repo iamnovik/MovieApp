@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieList from '../components/MovieList';
 import API_BASE_URL from '../config'; 
-
+import Pagination from '../components/Pagination';
 const Home = ({ query }) => {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-
     useEffect(() => {
         const fetchMovies = async () => {
             try {
@@ -17,7 +16,7 @@ const Home = ({ query }) => {
 
                 const response = await axios.get(endpoint);
                 setMovies(response.data.results);
-                setTotalPages(response.data.total_pages);
+                setTotalPages(response.data.total_Pages);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -27,15 +26,9 @@ const Home = ({ query }) => {
     }, [page, query]);
 
     return (
-        <div>
+        <div >
             <MovieList movies={movies} />
-            <div className="pagination">
-                {Array.from({ length: totalPages }, (_, index) => (
-                    <button key={index + 1} onClick={() => setPage(index + 1)}>
-                        {index + 1}
-                    </button>
-                ))}
-            </div>
+            <Pagination totalPages={totalPages} currentPage={page} setPage={setPage} />
         </div>
     );
 };

@@ -6,7 +6,6 @@ import Home from './pages/Home';
 
 const App = () => {
     const [searchQuery, setSearchQuery] = useState('');
-
     return (
         <Router>
             <Header onSearch={setSearchQuery} />
