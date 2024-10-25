@@ -8,12 +8,12 @@ namespace MovieApp.BLL.Services.Implementations;
 
 public class MovieService(IUnitOfWork unitOfWork) : IMovieService
 {
-    public async Task<List<MovieDto>> GetUpcomingMoviesAsync(int page, CancellationToken cancellationToken = default)
+    public async Task<MovieSearchResponse?> GetUpcomingMoviesAsync(int page, CancellationToken cancellationToken = default)
     {
         var moviesJson = await unitOfWork.Movies.GetUpcomingMoviesAsync(page);
         var movieApiResponse = JsonConvert.DeserializeObject<MovieSearchResponse>(moviesJson);
-        
-        return movieApiResponse?.Results ?? new List<MovieDto>();
+
+        return movieApiResponse;
     }
 
     public async Task<MovieDto?> GetMovieByIdAsync(int movieId, CancellationToken cancellationToken = default)
@@ -24,10 +24,10 @@ public class MovieService(IUnitOfWork unitOfWork) : IMovieService
         return movieDto;
     }
 
-    public async Task<List<MovieDto>?> SearchMoviesAsync(string query, int page, CancellationToken cancellationToken = default)
+    public async Task<MovieSearchResponse?> SearchMoviesAsync(string query, int page, CancellationToken cancellationToken = default)
     {
         var moviesJson = await unitOfWork.Movies.GetSearchMoviesAsync(query,page);
         var movieApiResponse = JsonConvert.DeserializeObject<MovieSearchResponse>(moviesJson);
-        return movieApiResponse?.Results;
+        return movieApiResponse;
     }
 }
