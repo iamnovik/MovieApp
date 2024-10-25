@@ -1,0 +1,33 @@
+/* CastMember.css */
+.cast-member {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    flex: 1 1 18%; 
+    margin: 10px;
+    text-align: center;
+    font-size: medium;
+}
+
+.cast-member-image {
+    width: 75%; 
+    border-radius: 5px;
+    border-radius: 50%; 
+}
+
+.cast-member-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.cast-member-name {
+    font-weight: bold;
+    margin: 0;
+    color:white
+}
+
+.cast-member-character {
+    margin: 0;
+    font-style: italic;
+    color: rgb(255, 255, 255); 
+}

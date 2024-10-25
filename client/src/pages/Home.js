@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieList from '../components/MovieList';
-import API_BASE_URL from '../config'; 
+import config from '../config'; 
 import Pagination from '../components/Pagination';
 const Home = ({ query }) => {
     const [movies, setMovies] = useState([]);
@@ -11,8 +11,8 @@ const Home = ({ query }) => {
         const fetchMovies = async () => {
             try {
                 const endpoint = query
-                    ? `${API_BASE_URL}/movie/search?query=${query}&page=${page}`
-                    : `${API_BASE_URL}/movie/?page=${page}`;
+                    ? `${config.apiBaseUrl}/movie/search?query=${query}&page=${page}`
+                    : `${config.apiBaseUrl}/movie/?page=${page}`;
 
                 const response = await axios.get(endpoint);
                 setMovies(response.data.results);
