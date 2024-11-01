@@ -43,4 +43,18 @@ public class ReviewService(IUnitOfWork unitOfWork, IMapper mapper) : IReviewServ
         
         return mapper.Map<ReviewReadDto>(updatedReview);
     }
+
+    public async Task<bool> DeleteReviewAsync(int id, CancellationToken cancellationToken = default)
+    {
+        var review = await unitOfWork.Reviews.GetByIdAsync(id, cancellationToken);
+
+        if (review != null)
+        {
+            await unitOfWork.Reviews.DeleteAsync(review, cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+            return true;
+        }
+
+        return false;
+    }
 }

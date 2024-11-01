@@ -40,4 +40,16 @@ public class ReviewController(IReviewService reviewService) : ControllerBase
         }
         return Ok(reviews);
     }
+    
+    [Authorize]
+    [HttpPost("delete/{id}")]
+    public async Task<IActionResult> DeleteReviewById(int id, CancellationToken cancellationToken = default)
+    {
+        var deleted = await reviewService.DeleteReviewAsync(id, cancellationToken);
+        if (deleted == false)
+        {
+            return NotFound();
+        }
+        return NoContent();
+    }
 }

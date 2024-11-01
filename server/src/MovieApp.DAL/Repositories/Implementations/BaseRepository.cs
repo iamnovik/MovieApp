@@ -33,10 +33,10 @@ public abstract class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, T
         return entity;
     }
 
-    public virtual async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)
+    public virtual Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
     {
-        var entity = await _dbSet.FindAsync(id, cancellationToken);
         _dbSet.Remove(entity);
+        return Task.CompletedTask;
     }
 
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default)

@@ -8,4 +8,6 @@ public interface IReviewService
         CancellationToken cancellationToken = default);
     Task<ReviewReadDto> AddReviewAsync(ReviewAddDto review, string userId, CancellationToken cancellationToken = default);
     Task<ReviewReadDto> UpdateReviewAsync(ReviewUpdateDto review, CancellationToken cancellationToken = default);
+
+    Task<bool> DeleteReviewAsync(int id, CancellationToken cancellationToken = default);
 }
