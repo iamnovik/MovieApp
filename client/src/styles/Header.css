@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: #fff;
+    gap: 30px;
+}
+
+.header-title {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-title h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header-search-form {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.header-search-input {
+    padding: 5px;
+    font-size: 16px;
+    margin-right: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.header-search-button {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}

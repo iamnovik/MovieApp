@@ -1,0 +1,29 @@
+.movie-details {
+    display: flex;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.details-container {
+    display: flex;
+    width: 100%;
+}
+
+.movie-poster {
+    width: 200px; 
+    height: auto;
+    object-fit: cover; 
+    margin-right: 20px; 
+    max-height: 300px;
+}
+
+
+.movie-info {
+    color: white; 
+    flex: 1; 
+    font-size: large;
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding: 20px;
+    border-radius: 10px; 
+}

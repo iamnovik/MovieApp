@@ -1,0 +1,34 @@
+/* ActorDetails.css */
+.actor-details {
+    padding: 20px;
+    color: white;
+}
+
+.actor-profile {
+    display: flex;
+    align-items: center;
+}
+
+.actor-profile img {
+    border-radius: 8px;
+    margin-right: 20px;
+    width: 150px; /* Fixed width for profile image */
+}
+
+.actor-profile h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.actor-profile p {
+    margin: 5px 0;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.actor-credits {
+    margin-top: 20px;
+}

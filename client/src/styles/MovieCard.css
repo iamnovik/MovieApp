@@ -1,0 +1,15 @@
+.movie-card {
+    background-color: #f0f0f0; 
+    color:black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    width: 300px;
+}
+.movie-card img {
+    width: 100%;
+    border-radius: 5px;
+}
