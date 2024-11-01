@@ -1,4 +1,5 @@
 using MovieApp.BLL.Models.Dto;
+using MovieApp.BLL.Models.Dto.MovieDto;
 
 namespace MovieApp.BLL.Services.Interfaces;
 

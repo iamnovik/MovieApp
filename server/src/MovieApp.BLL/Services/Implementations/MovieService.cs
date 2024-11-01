@@ -1,12 +1,13 @@
 using MovieApp.BLL.Models.ApiResponses;
 using MovieApp.BLL.Models.Dto;
+using MovieApp.BLL.Models.Dto.MovieDto;
 using MovieApp.BLL.Services.Interfaces;
 using MovieApp.DAL.Repositories.Interfaces;
 using Newtonsoft.Json;
 
 namespace MovieApp.BLL.Services.Implementations;
 
-public class MovieService(IUnitOfWork unitOfWork) : IMovieService
+public class MovieService(IApiUnitOfWork unitOfWork) : IMovieService
 {
     public async Task<MovieSearchResponse?> GetUpcomingMoviesAsync(int page, CancellationToken cancellationToken = default)
     {

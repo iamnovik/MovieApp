@@ -4,7 +4,7 @@ using MovieApp.DAL.ApiQueryParameters;
 namespace MovieApp.DAL.Repositories.Implementations;
 
 public class MovieRepository : 
-    BaseRepository,IMovieRepository
+    BaseApiRepository,IMovieRepository
 {
     public MovieRepository(HttpClient httpClient ) : base(httpClient)
     {

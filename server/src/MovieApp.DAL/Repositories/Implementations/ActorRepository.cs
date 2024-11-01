@@ -5,7 +5,7 @@ using MovieApp.DAL.Repositories.Interfaces;
 namespace MovieApp.DAL.Repositories.Implementations;
 
 public class ActorRepository : 
-    BaseRepository,IActorRepository
+    BaseApiRepository,IActorRepository
 {
     public ActorRepository(HttpClient httpClient) : base(httpClient)
     {
