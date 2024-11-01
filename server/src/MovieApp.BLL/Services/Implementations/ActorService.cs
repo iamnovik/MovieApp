@@ -1,12 +1,14 @@
 using MovieApp.BLL.Models.ApiResponses;
 using MovieApp.BLL.Models.Dto;
+using MovieApp.BLL.Models.Dto.ActorDto;
+using MovieApp.BLL.Models.Dto.MovieDto;
 using MovieApp.BLL.Services.Interfaces;
 using MovieApp.DAL.Repositories.Interfaces;
 using Newtonsoft.Json;
 
 namespace MovieApp.BLL.Services.Implementations;
 
-public class ActorService(IUnitOfWork unitOfWork) : IActorService
+public class ActorService(IApiUnitOfWork unitOfWork) : IActorService
 {
     public async Task<List<CastDto>?> GetActorsByMovieIdAsync(int actorId, CancellationToken cancellationToken = default)
     {

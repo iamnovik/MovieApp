@@ -17,7 +17,7 @@ public class MovieController(IMovieService _movieService) : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetMovieById(int id, CancellationToken cancellationToken = default)
     {
-        var movie = await _movieService.GetMovieByIdAsync(id);
+        var movie = await _movieService.GetMovieByIdAsync(id, cancellationToken);
         if (movie == null)
         {
             return NotFound();
@@ -28,7 +28,7 @@ public class MovieController(IMovieService _movieService) : ControllerBase
     [HttpGet("search")]
     public async Task<IActionResult> SearchMovies([FromQuery] string query, [FromQuery] int page = 1, CancellationToken cancellationToken = default)
     {
-        var movies = await _movieService.SearchMoviesAsync(query, page);
+        var movies = await _movieService.SearchMoviesAsync(query, page, cancellationToken);
         return Ok(movies);
     }   
 

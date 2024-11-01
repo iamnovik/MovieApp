@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MovieApp.BLL.Services.Implementations;
@@ -12,6 +13,10 @@ public static class DependencyInjectionExtension
         services.AddScoped<IMovieService, MovieService>();
         services.AddScoped<IActorService, ActorService>();
         services.AddScoped<IImageService, ImageService>();
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IRatingService, RatingService>();
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }
 }

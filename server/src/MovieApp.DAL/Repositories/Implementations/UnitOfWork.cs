@@ -1,32 +1,41 @@
-using Microsoft.Extensions.Configuration;
+using MovieApp.DAL.Context;
 using MovieApp.DAL.Repositories.Interfaces;
 
 namespace MovieApp.DAL.Repositories.Implementations;
 
-public class UnitOfWork : IUnitOfWork
+public class UnitOfWork(ApplicationDbContext context) : IUnitOfWork
 {
-    private HttpClient _httpClient;
-    private IConfiguration _configuration;
-    private string _apiKey;
-    public UnitOfWork(HttpClient httpClient)
+    private RatingRepository? _ratingRepository;
+
+    public IRatingRepository Ratings => _ratingRepository ??= new RatingRepository(context);
+    
+    private ReviewRepository? _reviewRepository;
+
+    public IReviewRepository Reviews => _reviewRepository ??= new ReviewRepository(context);
+    
+    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        _httpClient = httpClient;
+        await context.SaveChangesAsync(cancellationToken);
     }
-    private ActorRepository? _actorRepository;
 
-    public IActorRepository Actors => _actorRepository ??= new ActorRepository(_httpClient);
+    private bool _disposed = false;
+
+    public virtual void Dispose(bool disposing)
+    {
+        if (!this._disposed)
+        {
+            if (disposing)
+            {
+                context.Dispose();
+            }
+
+            this._disposed = true;
+        }
+    }
     
-    private MovieRepository? _movieRepository;
-
-    public IMovieRepository Movies => _movieRepository ??= new MovieRepository(_httpClient);
-    
-    private ImageRepository? _imageRepository;
-
-    public IImageRepository Images => _imageRepository ??= new ImageRepository(_httpClient);
-
-        
     public void Dispose()
     {
-        _httpClient?.Dispose();
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }
