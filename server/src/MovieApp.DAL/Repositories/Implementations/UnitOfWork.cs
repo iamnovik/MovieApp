@@ -13,6 +13,10 @@ public class UnitOfWork(ApplicationDbContext context) : IUnitOfWork
 
     public IReviewRepository Reviews => _reviewRepository ??= new ReviewRepository(context);
     
+    private WatchListRepository? _watchListRepository;
+
+    public IWatchListRepository WatchLists => _watchListRepository ??= new WatchListRepository(context);
+    
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         await context.SaveChangesAsync(cancellationToken);
