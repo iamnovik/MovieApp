@@ -16,6 +16,7 @@ public static class DependencyInjectionExtension
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IRatingService, RatingService>();
+        services.AddScoped<IReviewService, ReviewService>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }

@@ -7,24 +7,26 @@ using MovieApp.BLL.Services.Interfaces;
 namespace MovieApp.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 public class RatingController(IRatingService ratingService) : ControllerBase
 {
-    
+    [Authorize]
     [HttpPost("add")]
-    public async Task<IActionResult> AddRating([FromBody] RatingAddDto rating)
+    public async Task<IActionResult> AddRating([FromBody] RatingAddDto rating, CancellationToken cancellationToken = default)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        rating.UserId = userId!;
-        var result = await ratingService.AddRatingAsync(rating);
+        
+        var result = await ratingService.AddRatingAsync(rating, userId!, cancellationToken);
+        
         return CreatedAtAction(nameof(AddRating), new { id = result.Id }, result);
     }
     
+    [Authorize]
     [HttpPost("update")]
-    public async Task<IActionResult> UpdateRating([FromBody] RatingUpdateDto rating)
+    public async Task<IActionResult> UpdateRating([FromBody] RatingUpdateDto rating, CancellationToken cancellationToken = default)
     {
-        var result = await ratingService.UpdateRatingAsync(rating);
-        return CreatedAtAction(nameof(AddRating), new { id = result.Id }, result);
+        var result = await ratingService.UpdateRatingAsync(rating, cancellationToken);
+        
+        return Ok( result);
     }
     
     [HttpGet("movie/{id}")]

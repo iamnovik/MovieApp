@@ -16,11 +16,12 @@ public class RatingService(IUnitOfWork unitOfWork, IMapper mapper) : IRatingServ
         return mapper.Map<IEnumerable<RatingReadDto>>(ratings);
     }
 
-    public async Task<RatingReadDto> AddRatingAsync(RatingAddDto ratingDto, CancellationToken cancellationToken = default)
+    public async Task<RatingReadDto> AddRatingAsync(RatingAddDto ratingDto, string userId, CancellationToken cancellationToken = default)
     {
         if (ratingDto == null) throw new ArgumentNullException(nameof(ratingDto));
           
         var rating = mapper.Map<Rating>(ratingDto);
+        rating.UserId = userId;
         var createdRating = await unitOfWork.Ratings.AddAsync(rating, cancellationToken);
         await unitOfWork.SaveChangesAsync(cancellationToken);
         
