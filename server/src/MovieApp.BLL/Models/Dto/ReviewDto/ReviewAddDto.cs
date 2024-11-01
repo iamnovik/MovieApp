@@ -6,7 +6,4 @@ public class ReviewAddDto
     
     public int MovieId { get; set; }
     
-    public string UserId { get; set; } = null!;
-    
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
