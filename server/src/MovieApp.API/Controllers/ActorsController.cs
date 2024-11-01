@@ -10,7 +10,7 @@ public class ActorsController(IActorService _actorService) : ControllerBase
     [HttpGet("movie/{movieId}")]
     public async Task<IActionResult> GetActorsByMovie(int movieId, CancellationToken cancellationToken = default)
     {
-        var actors = await _actorService.GetActorsByMovieIdAsync(movieId);
+        var actors = await _actorService.GetActorsByMovieIdAsync(movieId, cancellationToken);
         if (actors == null)
         {
             return NotFound();
@@ -21,7 +21,7 @@ public class ActorsController(IActorService _actorService) : ControllerBase
     [HttpGet("{id}/combined_credits")]
     public async Task<IActionResult> GetActorsCreditsById(int id, CancellationToken cancellationToken = default)
     {
-        var actorCredits = await _actorService.GetActorCreditsByIdAsync(id);
+        var actorCredits = await _actorService.GetActorCreditsByIdAsync(id, cancellationToken);
         if (actorCredits == null)
         {
             return NotFound();
@@ -32,7 +32,7 @@ public class ActorsController(IActorService _actorService) : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetActorById(int id, CancellationToken cancellationToken = default)
     {
-        var actor = await _actorService.GetActorByIdAsync(id);
+        var actor = await _actorService.GetActorByIdAsync(id, cancellationToken);
         if (actor == null)
         {
             return NotFound();
@@ -42,7 +42,7 @@ public class ActorsController(IActorService _actorService) : ControllerBase
     [HttpGet("search")]
     public async Task<IActionResult> SearchActors([FromQuery] string query, [FromQuery] int page = 1, CancellationToken cancellationToken = default)
     {
-        var actors = await _actorService.SearchActorsAsync(query, page);
+        var actors = await _actorService.SearchActorsAsync(query, page, cancellationToken);
         return Ok(actors);
     }
     

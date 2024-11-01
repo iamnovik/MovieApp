@@ -1,4 +1,4 @@
-namespace MovieApp.BLL.Models.Dto;
+namespace MovieApp.BLL.Models.Dto.ActorDto;
 
 public class ActorSearchDto
 {

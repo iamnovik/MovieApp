@@ -1,11 +1,10 @@
 namespace MovieApp.DAL.Repositories.Interfaces;
 
-public interface IUnitOfWork : IDisposable
+public interface IUnitOfWork
 {
-    IActorRepository Actors { get; }
+    IReviewRepository Reviews { get; }
     
-    IMovieRepository Movies { get; }
-    
-    IImageRepository Images { get; }
+    IRatingRepository Ratings { get; }
 
+    Task SaveChangesAsync(CancellationToken cancellationToken = default);
 }

@@ -1,5 +1,7 @@
 using MovieApp.BLL.Models.ApiResponses;
 using MovieApp.BLL.Models.Dto;
+using MovieApp.BLL.Models.Dto.ActorDto;
+using MovieApp.BLL.Models.Dto.MovieDto;
 
 namespace MovieApp.BLL.Services.Interfaces;
 

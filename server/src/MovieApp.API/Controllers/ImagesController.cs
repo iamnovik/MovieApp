@@ -9,7 +9,7 @@ public class ImagesController(IImageService imageService) : ControllerBase
     [HttpGet("movie/{movieId}")]
     public async Task<IActionResult> GetPostersByMovie(int movieId, CancellationToken cancellationToken = default)
     {
-        var posters = await imageService.GetPostersByMovieIdAsync(movieId);
+        var posters = await imageService.GetPostersByMovieIdAsync(movieId, cancellationToken);
         if (posters == null)
         {
             return NotFound();
