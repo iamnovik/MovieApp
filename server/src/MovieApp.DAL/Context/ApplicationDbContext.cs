@@ -10,6 +10,7 @@ namespace MovieApp.DAL.Context
     {
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<WatchList> WatchLists { get; set; }
         
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -5,7 +5,7 @@ namespace MovieApp.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class MovieController(IMovieService _movieService) : ControllerBase
+public class MovieController(IMovieService _movieService, IWatchListService watchListService) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetUpcomingMovies([FromQuery] int page, CancellationToken cancellationToken = default)
@@ -31,5 +31,12 @@ public class MovieController(IMovieService _movieService) : ControllerBase
         var movies = await _movieService.SearchMoviesAsync(query, page, cancellationToken);
         return Ok(movies);
     }   
+    
+    [HttpGet("{id}/watchlist-count")]
+    public async Task<IActionResult> GetWatchListsByMovieId(int id)
+    {
+        var watchLists = await watchListService.GetWatchListsByMovieIdAsync(id);
+        return Ok(watchLists);
+    }
 
 }

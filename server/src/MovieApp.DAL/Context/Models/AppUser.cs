@@ -6,4 +6,6 @@ public sealed class AppUser : IdentityUser
 {
     public ICollection<Review> Reviews { get; set; } = new List<Review>();
     public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
+    
+    public ICollection<WatchList> WatchList { get; set; } = new List<WatchList>();
 }
